@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <title>Booking Page</title>
   <style>
-    
+    /* Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    /* Reset and base */
     * {
       box-sizing: border-box;
     }
@@ -26,70 +28,85 @@
       color: #1f2937;
     }
 
+    /* Navigation */
     nav {
-  background-color: #1f2937;
-  padding: 15px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+      background-color: #1f2937;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+    }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-.logo {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #ffffff;
-}
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
 
-.nav-links li a {
-  text-decoration: none;
-  color: #d1d5db;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
+    .nav-links li a {
+      text-decoration: none;
+      color: #d1d5db;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
 
-.nav-links li a:hover {
-  color: #3b82f6;
-}
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      color: #3b82f6;
+      outline: none;
+    }
 
-@media (max-width: 600px) {
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    @media (max-width: 600px) {
+      nav {
+        position: static;
+        padding: 10px 0;
+        margin-top: 40px;
+      }
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
 
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    width: 100%;
-  }
-}
-
-   
+    /* Hotel list grid */
     .hotel-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
       max-width: 1200px;
-      margin: 0 auto 60px auto;
+      margin: 0 auto 100px auto; /* Extra bottom margin for nav */
       padding: 0 10px;
     }
 
- 
+    /* Individual hotel card */
     .hotel {
       background: #fff;
       border-radius: 16px;
@@ -99,7 +116,8 @@
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .hotel:hover {
+    .hotel:hover,
+    .hotel:focus-within {
       transform: translateY(-8px);
       box-shadow: 0 12px 28px rgba(0,0,0,0.15);
     }
@@ -115,8 +133,6 @@
       color: #4b5563;
       flex-grow: 1;
     }
-
-   
     .hotel button {
       margin-top: 18px;
       padding: 12px 18px;
@@ -130,9 +146,11 @@
       box-shadow: 0 4px 12px rgba(59,130,246,0.4);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .hotel button:hover:not(:disabled) {
+    .hotel button:hover:not(:disabled),
+    .hotel button:focus:not(:disabled) {
       background: #2563eb;
       box-shadow: 0 6px 16px rgba(37,99,235,0.6);
+      outline: none;
     }
     .hotel button:disabled {
       background: #9ca3af;
@@ -140,7 +158,7 @@
       box-shadow: none;
     }
 
-    
+    /* Booking modal */
     #booking-modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -151,8 +169,10 @@
       z-index: 9999;
       padding: 20px;
     }
+    #booking-modal.active {
+      display: flex;
+    }
 
-   
     #booking-modal .modal-content {
       background: #f9fafb;
       border-radius: 20px;
@@ -183,7 +203,6 @@
       color: #4b5563;
     }
 
-    
     #booking-modal .close-btn {
       position: absolute;
       top: 18px;
@@ -194,10 +213,11 @@
       cursor: pointer;
       transition: color 0.25s ease;
     }
-    #booking-modal .close-btn:hover {
+    #booking-modal .close-btn:hover,
+    #booking-modal .close-btn:focus {
       color: #111827;
+      outline: none;
     }
-
 
     #confirm-booking-btn {
       margin-top: 25px;
@@ -213,9 +233,11 @@
       box-shadow: 0 6px 15px rgba(16,185,129,0.5);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
-    #confirm-booking-btn:hover:not(:disabled) {
+    #confirm-booking-btn:hover:not(:disabled),
+    #confirm-booking-btn:focus:not(:disabled) {
       background: #059669;
       box-shadow: 0 8px 22px rgba(5,150,105,0.6);
+      outline: none;
     }
     #confirm-booking-btn:disabled {
       background: #6ee7b7;
@@ -235,11 +257,13 @@
       text-decoration: none;
       font-weight: 700;
     }
-    #payment-link a:hover {
+    #payment-link a:hover,
+    #payment-link a:focus {
       text-decoration: underline;
+      outline: none;
     }
 
-    
+    /* Date inputs styling */
     .date-inputs {
       margin-top: 15px;
       display: flex;
@@ -262,9 +286,13 @@
       border: 1.5px solid #d1d5db;
       font-size: 1rem;
       outline-color: #3b82f6;
+      transition: border-color 0.3s ease;
+    }
+    .date-inputs input:focus {
+      border-color: #3b82f6;
+      outline: none;
     }
 
-    
     @media (max-width: 500px) {
       .hotel-list {
         grid-template-columns: 1fr;
@@ -284,24 +312,22 @@
 <body>
 
   <h1>Booking Hotels</h1>
-  <div class="hotel-list" id="hotel-list">
+  <div class="hotel-list" id="hotel-list" tabindex="0" aria-label="List of hotels"></div>
 
-  </div>
   <nav>
     <div class="nav-container">
       <div class="logo">TravelEase</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" tabindex="0">Home</a></li>
+        <li><a href="about.html" tabindex="0">About</a></li>
+        <li><a href="contact.html" tabindex="0">Contact</a></li>
       </ul>
     </div>
   </nav>
 
- 
   <div id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-hotel-name" tabindex="-1">
     <div class="modal-content">
-      <span class="close-btn" id="modal-close" aria-label="Close modal">&times;</span>
+      <button class="close-btn" id="modal-close" aria-label="Close modal">&times;</button>
       <h2 id="modal-hotel-name"></h2>
       <p><strong>Location:</strong> <span id="modal-hotel-location"></span></p>
       <p><strong>Rooms Available:</strong> <span id="modal-hotel-rooms"></span></p>
@@ -310,31 +336,30 @@
         20% of this booking supports employment for individuals with special needs.
       </p>
 
-     
       <div class="date-inputs">
         <label>
           Check-in Date:
-          <input type="date" id="checkin-date" required />
+          <input type="date" id="checkin-date" required aria-required="true" />
         </label>
         <label>
           Check-out Date:
-          <input type="date" id="checkout-date" required />
+          <input type="date" id="checkout-date" required aria-required="true" />
         </label>
       </div>
 
-      <button id="confirm-booking-btn">Confirm Booking</button>
+      <button id="confirm-booking-btn" disabled>Confirm Booking</button>
 
       <div id="payment-link" style="display:none;">
         Thank you for your booking! Please proceed to payment here:  
-        <a href="https://www.example-payment.com" target="_blank" id="payment-url" rel="noopener noreferrer">Pay Now</a>
+        <a href="#" target="_blank" id="payment-url" rel="noopener noreferrer">Pay Now</a>
       </div>
     </div>
   </div>
 
   <script>
     const hotels = [
-      { name: "Luxury Hotel ", location: "Tokyo, Japan", roomsAvailable: 5, pricePerNight: 120 },
-      { name: "Traditional Ryokan ", location: " Kyoto, Japan", roomsAvailable: 3, pricePerNight: 150 },
+      { name: "Luxury Hotel", location: "Tokyo, Japan", roomsAvailable: 5, pricePerNight: 120 },
+      { name: "Traditional Ryokan", location: "Kyoto, Japan", roomsAvailable: 3, pricePerNight: 150 },
       { name: "Boutique Hotel", location: "Osaka, Japan", roomsAvailable: 2, pricePerNight: 130 },
       { name: "Fashion District Hotel", location: "Hokkaido, Japan", roomsAvailable: 6, pricePerNight: 140 },
       { name: "Naples Retreat", location: "Okinawa, Japan", roomsAvailable: 3, pricePerNight: 110 },
@@ -352,11 +377,13 @@
 
     let currentHotelIndex = null;
 
+    // Render hotel cards
     function renderHotels() {
       hotelListDiv.innerHTML = '';
       hotels.forEach((hotel, index) => {
         const hotelDiv = document.createElement('div');
         hotelDiv.className = 'hotel';
+        hotelDiv.setAttribute('tabindex', '0'); // for accessibility focus
         hotelDiv.innerHTML = `
           <h2>${hotel.name}</h2>
           <p><strong>Location:</strong> ${hotel.location}</p>
@@ -368,6 +395,7 @@
       });
     }
 
+    // Open modal with hotel details
     function openModal(index) {
       currentHotelIndex = index;
       const hotel = hotels[index];
@@ -376,95 +404,147 @@
       document.getElementById('modal-hotel-rooms').textContent = hotel.roomsAvailable;
       document.getElementById('modal-hotel-price').textContent = hotel.pricePerNight;
 
-    
       checkinInput.value = '';
       checkoutInput.value = '';
+      confirmBookingBtn.disabled = true;
       paymentLinkDiv.style.display = 'none';
       confirmBookingBtn.style.display = 'inline-block';
-      confirmBookingBtn.disabled = false;
 
-    
+      // Set minimum date to today and update checkout accordingly
       const todayStr = new Date().toISOString().split('T')[0];
       checkinInput.min = todayStr;
       checkoutInput.min = todayStr;
 
-      modal.style.display = 'flex';
+      modal.classList.add('active');
+      modal.setAttribute('tabindex', '-1');
       modal.focus();
+
+      // Trap focus inside modal
+      trapFocus(modal);
     }
 
+    // Close modal
     function closeModal() {
-      modal.style.display = 'none';
+      modal.classList.remove('active');
       currentHotelIndex = null;
+      releaseFocusTrap();
     }
 
+    // Validate dates and enable confirm button if valid
     function validateDates() {
+      const checkin = new Date(checkinInput.value);
+      const checkout = new Date(checkoutInput.value);
+
+      if (
+        checkinInput.value &&
+        checkoutInput.value &&
+        checkout > checkin
+      ) {
+        confirmBookingBtn.disabled = false;
+      } else {
+        confirmBookingBtn.disabled = true;
+      }
+    }
+
+    // On confirm booking
+    function confirmBooking() {
+      if (currentHotelIndex === null) return;
+
+      const hotel = hotels[currentHotelIndex];
       const checkin = checkinInput.value;
       const checkout = checkoutInput.value;
 
-      if (!checkin || !checkout) {
-        return false;
-      }
-      if (checkin >= checkout) {
-        return false;
-      }
-      return true;
+      if (!checkin || !checkout) return;
+
+      // Simple confirmation message and payment link
+      confirmBookingBtn.style.display = 'none';
+
+      // Example payment URL (this would be dynamic or from a payment provider)
+      const paymentUrl = `https://payment.example.com/checkout?hotel=${encodeURIComponent(hotel.name)}&checkin=${checkin}&checkout=${checkout}`;
+      const paymentUrlAnchor = document.getElementById('payment-url');
+      paymentUrlAnchor.href = paymentUrl;
+      paymentUrlAnchor.textContent = "Proceed to Payment";
+
+      paymentLinkDiv.style.display = 'block';
     }
 
+    // Event delegation for hotel book buttons
+    hotelListDiv.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON' && e.target.dataset.index !== undefined) {
+        openModal(parseInt(e.target.dataset.index));
+      }
+    });
+
+    // Close modal on close button click
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Close modal on ESC key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Validate date inputs
     checkinInput.addEventListener('change', () => {
+      // Update checkout min date to be after checkin
       if (checkinInput.value) {
-        const nextDay = new Date(checkinInput.value);
-        nextDay.setDate(nextDay.getDate() + 1);
-        checkoutInput.min = nextDay.toISOString().split('T')[0];
-        // Auto-clear checkout if before min
-        if (checkoutInput.value && checkoutInput.value < checkoutInput.min) {
+        const minCheckoutDate = new Date(checkinInput.value);
+        minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
+        checkoutInput.min = minCheckoutDate.toISOString().split('T')[0];
+        if (checkoutInput.value && new Date(checkoutInput.value) <= new Date(checkinInput.value)) {
           checkoutInput.value = '';
         }
       } else {
         checkoutInput.min = new Date().toISOString().split('T')[0];
       }
-      confirmBookingBtn.disabled = !validateDates();
+      validateDates();
     });
 
-    checkoutInput.addEventListener('change', () => {
-      confirmBookingBtn.disabled = !validateDates();
-    });
+    checkoutInput.addEventListener('change', validateDates);
 
-    
-    hotelListDiv.addEventListener('click', e => {
-      if (e.target.tagName === 'BUTTON' && e.target.dataset.index) {
-        openModal(parseInt(e.target.dataset.index));
+    // Confirm booking button
+    confirmBookingBtn.addEventListener('click', confirmBooking);
+
+    // Focus trap implementation
+    let focusableElements = [];
+    let firstFocusableEl;
+    let lastFocusableEl;
+
+    function trapFocus(element) {
+      focusableElements = element.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      if (focusableElements.length === 0) return;
+
+      firstFocusableEl = focusableElements[0];
+      lastFocusableEl = focusableElements[focusableElements.length - 1];
+
+      element.addEventListener('keydown', handleTrapFocus);
+      firstFocusableEl.focus();
+    }
+
+    function releaseFocusTrap() {
+      modal.removeEventListener('keydown', handleTrapFocus);
+    }
+
+    function handleTrapFocus(e) {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey) { // shift + tab
+        if (document.activeElement === firstFocusableEl) {
+          e.preventDefault();
+          lastFocusableEl.focus();
+        }
+      } else { // tab
+        if (document.activeElement === lastFocusableEl) {
+          e.preventDefault();
+          firstFocusableEl.focus();
+        }
       }
-    });
+    }
 
-    modalCloseBtn.addEventListener('click', closeModal);
-
-    
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    // Confirm booking handler
-    confirmBookingBtn.addEventListener('click', () => {
-      if (!validateDates()) {
-        alert('Please enter valid check-in and check-out dates.');
-        return;
-      }
-     
-
-      const hotel = hotels[currentHotelIndex];
-      hotel.roomsAvailable--;
-      renderHotels();
-
-      
-      confirmBookingBtn.style.display = 'none';
-      paymentLinkDiv.style.display = 'block';
-
-      const paymentUrl = 'https://www.paypal.com/paypalme/YourBusinessName';
-      document.getElementById('payment-url').href = paymentUrl;
-    });
-
+    // Initialize
     renderHotels();
-
   </script>
 </body>
 </html>
+

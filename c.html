@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Community Blog - Travel & Special Needs Rights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0 20px 60px 20px;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      max-width: 900px;
+      margin: 40px auto 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    nav {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #3b82f6;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      transition: border-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      border-color: #3b82f6;
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+  
+    #filter-buttons {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #filter-buttons button {
+      background: #3b82f6;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      margin: 0 6px 12px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    #filter-buttons button.active,
+    #filter-buttons button:hover {
+      background: #2563eb;
+    }
+
+    article {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      margin-bottom: 28px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    article:hover,
+    article:focus-within {
+      box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    }
+
+    article h2 {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #111827;
+    }
+
+    article p.excerpt {
+      font-size: 1rem;
+      color: #4b5563;
+      margin: 12px 0 12px;
+    }
+
+    article p.full-text {
+      display: none;
+      margin-top: 12px;
+      color: #374151;
+    }
+
+    article button.toggle-full {
+      background: none;
+      border: none;
+      color: #3b82f6;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0;
+      margin-top: 8px;
+      text-decoration: underline;
+    }
+    article button.toggle-full:hover,
+    article button.toggle-full:focus {
+      outline: none;
+      color: #2563eb;
+    }
+
+    /* Newsletter */
+    #newsletter {
+      background: #e0e7ff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      margin: 40px auto 40px;
+      max-width: 900px;
+      text-align: center;
+    }
+    #newsletter h3 {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #3730a3;
+    }
+    #newsletter input[type="email"] {
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: 2px solid #c7d2fe;
+      border-radius: 6px;
+      width: 260px;
+      max-width: 100%;
+      margin-right: 10px;
+      transition: border-color 0.3s ease;
+    }
+    #newsletter input[type="email"]:focus {
+      border-color: #4338ca;
+      outline: none;
+    }
+    #newsletter button {
+      background: #4338ca;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #newsletter button:hover {
+      background: #3730a3;
+    }
+
+    /* Comments section */
+    #comments {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      background: #fff;
+      padding: 24px 28px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+    #comments h3 {
+      margin-top: 0;
+      color: #111827;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    #comments form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #comments textarea {
+      resize: vertical;
+      min-height: 80px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 2px solid #d1d5db;
+      transition: border-color 0.3s ease;
+    }
+    #comments textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
+    }
+    #comments button {
+      align-self: flex-start;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #comments button:hover {
+      background: #2563eb;
+    }
+    #comments .comment-list {
+      margin-top: 20px;
+    }
+    #comments .comment-list p {
+      background: #f9fafb;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      border-left: 4px solid #3b82f6;
+      color: #374151;
+    }
+
+    footer {
+      max-width: 900px;
+      margin: 50px auto 20px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 0 15px 50px 15px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      article {
+        padding: 20px 18px;
+      }
+      #newsletter input[type="email"] {
+        margin-bottom: 12px;
+        width: 100%;
+        margin-right: 0;
+      }
+      #newsletter button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Community Blog</h1>
+    <p>Learn more about how travel supports communities and the rights of people with special needs.</p>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="community-blog.html" aria-current="page">Community Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section id="filter-buttons" aria-label="Filter articles by category">
+      <button class="active" data-category="all">All</button>
+      <button data-category="sustainable">Sustainable Tourism</button>
+      <button data-category="inclusive">Inclusive Tourism</button>
+      <button data-category="stories">Stories</button>
+      <button data-category="rights">Rights</button>
+    </section>
+
+    <article tabindex="0" data-category="sustainable">
+      <h2>How Travel Empowers Local Communities</h2>
+      <p class="excerpt">
+        Discover the ways tourism can create sustainable jobs and improve local economies while respecting cultural heritage.
+      </p>
+      <p class="full-text">
+        Tourism, when done responsibly, supports local economies by creating jobs in areas like hospitality, guiding, and handicrafts. Communities can thrive while preserving traditions and environment. Sustainable travel encourages respect and long-term benefits for locals.
+      </p>
+      <button class="toggle-full" aria-expanded="false" aria-controls="article1-fulltext">Read More</button>
+    </article>
+
+    <article tabindex="0" data-category="inclusive">
+      <h2>Supporting People with Special Needs Through Inclusive Tourism</h2>
+      <p class="excerpt">
+        Learn about inclusive travel initiatives that ensure accessibility and dignity for travelers with special needs worldwide.
+      </p>
+      <p class="full-text" id="article2-fulltext">
+        Inclusive tourism projects focus on removing barriers for travelers with disabilities. This includes accessible transport, accommodations, and attractions. Such efforts promote dignity and freedom, allowing all to enjoy travel equally.
+      </p>
+      <button class="toggle-full" aria-expanded="false" aria-controls="article2-fulltext">Read More</button>
+    </article>
+
+    <article tabindex="0" data-category="stories">
+      <h2>Stories of Community Resilience and Travel</h2>
+      <p class="excerpt">
+        Inspiring stories from travelers and locals highlighting the positive impact of community-focused travel projects.
+      </p>
+      <p class="full-text">
+        From rebuilding after disasters to creating new business opportunities, communities show incredible resilience. Travelers’ respect and support help these stories grow and inspire others to contribute positively.
+      </p>
+      <button class="toggle-full" aria-expanded="false" aria-controls="article3-fulltext">Read More</button>
+    </article>
+
+    <article tabindex="0" data-category="rights">
+      <h2>The Rights of People with Special Needs in Global Travel</h2>
+      <p class="excerpt">
+        An overview of international laws and best practices protecting the rights of travelers with disabilities.
+      </p>
+      <p class="full-text" id="article4-fulltext">
+        Various international agreements, like the UN Convention on the Rights of Persons with Disabilities, set standards for accessible travel. Airlines, hotels, and countries are increasingly adopting practices to comply and ensure fair treatment.
+      </p>
+      <button class="toggle-full" aria-expanded="false" aria-controls="article4-fulltext">Read More</button>
+    </article>
+
+  
+    <section id="newsletter" aria-label="Newsletter subscription">
+      <h3>Subscribe to Our Newsletter</h3>
+      <form id="newsletter-form" action="#" method="post">
+        <label for="email" class="sr-only">Email address</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="newsletter-message" role="alert" style="margin-top:12px; color:#2563eb;"></p>
+    </section>
+
+  
+    <section id="comments" aria-label="Comments">
+      <h3>Leave a Comment</h3>
+      <form id="comment-form" action="#" method="post">
+        <label for="comment-text" class="sr-only">Your comment</label>
+        <textarea id="comment-text" name="comment-text" placeholder="Write your comment here..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      <div class="comment-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 TravelEase. Supporting inclusive and responsible tourism.
+  </footer>
+
+  <script>
+
+    document.querySelectorAll('article button.toggle-full').forEach(button => {
+      button.addEventListener('click', () => {
+        const article = button.closest('article');
+        const fullText = article.querySelector('.full-text');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          fullText.style.display = 'none';
+          button.textContent = 'Read More';
+          button.setAttribute('aria-expanded', 'false');
+        } else {
+          fullText.style.display = 'block';
+          button.textContent = 'Read Less';
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+   
+    const filterButtons = document.querySelectorAll('#filter-buttons button');
+    const articles = document.querySelectorAll('main article');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+       
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.getAttribute('data-category');
+
+        articles.forEach(article => {
+          if (category === 'all' || article.getAttribute('data-category') === category) {
+            article.style.display = '';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterMessage = document.getElementById('newsletter-message');
+    newsletterForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = newsletterForm.email.value;
+      if(email){
+        newsletterMessage.textContent = `Thank you for subscribing, ${email}!`;
+        newsletterForm.reset();
+      }
+    });
+
+   
+    const commentForm = document.getElementById('comment-form');
+    const commentList = document.querySelector('#comments .comment-list');
+
+    commentForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const commentText = commentForm['comment-text'].value.trim();
+      if(commentText.length > 0){
+        const newComment = document.createElement('p');
+        newComment.textContent = commentText;
+        commentList.prepend(newComment);
+        commentForm.reset();
+      }
+    });
+  </script>
+</body>
+</html>

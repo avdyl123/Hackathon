@@ -1,74 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contact.css">
+  <meta charset="UTF-8" />
+  <title>Contact Us - TravelEase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="contact.css">
+  
 </head>
 <body>
+  <main>
+    <h1>Contact Us</h1>
+    <form id="contact-form" novalidate>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required minlength="2" />
 
-<header>
-    <div class="logo">
-        <h1>Top 10 Countries to Visit</h1>
-    </div>
-</header>
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="john@example.com" required />
 
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="country.html">Country</a></li>
-    </ul>
-</nav>
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required minlength="10"></textarea>
 
-<section class="contact-us">
-    <h2>Contact Us</h2>
-    <p>If you have any questions, comments, or suggestions, feel free to get in touch with us. We're always happy to hear from fellow travelers!</p>
-
-    <h3>Contact Form</h3>
-    <form onsubmit="return validation();" method="POST">
-        <div class="name-container">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
-            <span id="name_error" class="error">Please enter a valid Name</span>
-        </div>
-        <div class="name-container">
-            <label for="age">Age:</label>
-            <input type="text" name="age" id="age">
-            <span id="age_error" class="error">Please enter a valid age</span>
-        </div>
-        <div class="name-container">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
-            <span id="email_error" class="error">Please enter a valid Email</span>
-        </div>
-        <div class="name-container">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5"></textarea>
-        </div>
-        <div class="city-container">
-            <label for="city">City:</label>
-            <select name="city" id="city">
-                <option value="">Select a City</option>
-                <option value="Prishtine">Prishtine</option>
-                <option value="Prizren">Prizren</option>
-                <option value="Gjilan">Gjilan</option>
-                <option value="Ferizaj">Ferizaj</option>
-            </select>
-            <span id="city_error" class="error">Please select a city</span>
-        </div>
-        <br>
-        <button type="submit" name="submit">Send</button>
+      <button type="submit">Send Message</button>
     </form>
+    <p id="success-message" role="alert">Thank you for contacting us! We'll get back to you soon.</p>
+  </main>
 
-    <h3>Our Address</h3>
-    <p>We may be a virtual team, but we love connecting with our audience!</p>
-    <p><strong>Address:</strong>Rruga "Agim Ramadani" 12</p>
-    <p><strong>Email:</strong> top10countries@gmail.com</p>
-</section>
+  <footer>
+    &copy; 2025 TravelEase. Supporting inclusive and responsible tourism.
+  </footer>
 
-<script src="main.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-message');
 
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      if (form.checkValidity()) {
+        
+        form.reset();
+        successMsg.style.display = 'block';
+
+        
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 5000);
+      } else {
+        
+        form.reportValidity();
+      }
+    });
+  </script>
 </body>
 </html>

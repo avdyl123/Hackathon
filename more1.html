@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Community Blog - Travel & Special Needs Rights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0 20px 60px 20px;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      max-width: 900px;
+      margin: 40px auto 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    nav {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #3b82f6;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      transition: border-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      border-color: #3b82f6;
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    article {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      margin-bottom: 28px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    article:hover,
+    article:focus-within {
+      box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    }
+
+    article h2 {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #111827;
+    }
+
+    article p.excerpt {
+      font-size: 1rem;
+      color: #4b5563;
+      margin: 12px 0 20px;
+    }
+
+    article a.read-more {
+      font-weight: 600;
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    article a.read-more:hover,
+    article a.read-more:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .extra-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .extra-content p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    button.read-more-btn {
+      margin-top: 12px;
+      background: none;
+      border: none;
+      color: #3b82f6;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    button.read-more-btn:hover,
+    button.read-more-btn:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    footer {
+      max-width: 900px;
+      margin: 50px auto 20px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 0 15px 50px 15px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      article {
+        padding: 20px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Community Blog</h1>
+    <p>Learn more about how travel supports communities and the rights of people with special needs.</p>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="c.html" aria-current="page">Community Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <article tabindex="0">
+      <h2>How Travel Empowers Local Communities</h2>
+      <p class="excerpt">
+        Discover the ways tourism can create sustainable jobs and improve local economies while respecting cultural heritage.
+      </p>
+
+      <div class="extra-content">
+        <p>
+          Tourism, when managed responsibly, creates sustainable employment opportunities and supports local artisans, farmers, and businesses. By promoting cultural heritage, travel helps preserve traditions and fosters pride in local communities.
+        </p>
+        <p>
+          Additionally, supporting eco-friendly and community-based tourism ensures that economic benefits reach the people who need it most, improving livelihoods and encouraging cultural exchange.
+        </p>
+      </div>
+
+      <button class="read-more-btn" aria-expanded="false" aria-label="Read more about how travel empowers local communities">
+        Read More →
+      </button>
+    </article>
+
+    <article tabindex="0">
+      <h2>Supporting People with Special Needs Through Inclusive Tourism</h2>
+      <p class="excerpt">
+        Learn about inclusive travel initiatives that ensure accessibility and dignity for travelers with special needs worldwide.
+      </p>
+
+      <div class="extra-content">
+        <p>
+          Inclusive tourism focuses on removing barriers and creating experiences accessible to everyone, regardless of physical or cognitive challenges. From accessible accommodations to trained staff, these initiatives empower travelers with special needs to explore confidently.
+        </p>
+        <p>
+          Many organizations work globally to advocate for policies and infrastructure that prioritize inclusivity, ensuring dignity and equal opportunities in travel.
+        </p>
+      </div>
+
+      <button class="read-more-btn" aria-expanded="false" aria-label="Read more about supporting people with special needs through inclusive tourism">
+        Read More →
+      </button>
+    </article>
+
+    <article tabindex="0">
+      <h2>Stories of Community Resilience and Travel</h2>
+      <p class="excerpt">
+        Inspiring stories from travelers and locals highlighting the positive impact of community-focused travel projects.
+      </p>
+
+      <div class="extra-content">
+        <p>
+          Communities around the world have demonstrated remarkable resilience by leveraging tourism to rebuild after hardships like natural disasters or economic downturns. Travelers' support often fuels these efforts, fostering hope and recovery.
+        </p>
+        <p>
+          Personal stories from both locals and visitors reveal how community-focused travel projects promote cultural understanding, environmental stewardship, and mutual respect.
+        </p>
+      </div>
+
+      <button class="read-more-btn" aria-expanded="false" aria-label="Read more stories of community resilience and travel">
+        Read More →
+      </button>
+    </article>
+
+    <article tabindex="0">
+      <h2>The Rights of People with Special Needs in Global Travel</h2>
+      <p class="excerpt">
+        An overview of international laws and best practices protecting the rights of travelers with disabilities.
+      </p>
+
+      <div class="extra-content">
+        <p>
+          International frameworks like the UN Convention on the Rights of Persons with Disabilities set standards to protect the rights of travelers with special needs. These laws promote equal access, non-discrimination, and reasonable accommodations.
+        </p>
+        <p>
+          Many countries are improving their regulations and infrastructure to align with these standards, but travelers should stay informed and advocate for their rights while exploring the globe.
+        </p>
+      </div>
+
+      <button class="read-more-btn" aria-expanded="false" aria-label="Read more about the rights of people with special needs in global travel">
+        Read More →
+      </button>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2025 TravelEase. Supporting inclusive and responsible tourism.
+  </footer>
+
+  <script>
+    document.querySelectorAll('.read-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.previousElementSibling; // extra-content div
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+
+        if (expanded) {
+          content.style.maxHeight = '0';
+          button.setAttribute('aria-expanded', 'false');
+          button.textContent = 'Read More →';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          button.setAttribute('aria-expanded', 'true');
+          button.textContent = 'Read Less ↓';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

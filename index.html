@@ -29,7 +29,7 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="#countries">Countries</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="aboutus2.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
 </nav>
@@ -102,6 +102,60 @@
     </div>
 
 </section>
+
+<section class="impact-section" id="impact">
+    <h2>Community Impact</h2>
+    <p>Total Raised: <strong>$12,430</strong></p>
+    <p>People Helped: <strong>38+</strong></p>
+    <div class="chart-placeholder">[Insert Graph Here]</div>
+    <div class="thank-you-box">
+        <h3>Thank you for supporting the community! 🙏</h3>
+        <p>A certificate of appreciation will be sent to your email.</p>
+    </div>
+</section>
+
+<section class="stories-section">
+    <h2>Real Impact Stories</h2>
+    <div class="story">
+        <img src="beneficiary1.jpg" alt="Beneficiary Story">
+        <p>Ardita received hospitality training thanks to your support.</p>
+    </div>
+    <div class="story">
+        <img src="beneficiary2.jpg" alt="Beneficiary Story">
+        <p>Flamur got a job at a partner hotel in Switzerland.</p>
+    </div>
+</section>
+
+<section class="blog-section">
+    <h2>Community Blog</h2>
+    <p>Learn more about how travel supports communities and the rights of people with special needs.</p>
+    <a href="more1.html" class="blog-link">Explore Our Blog</a>
+</section>
+
+<footer>
+    <p>&copy; 2025 Travel for Good. All rights reserved.</p>
+</footer>
+
+<!-- Popup Support Prompt -->
+<div id="supportPopup" style="display:none;">
+    <p>Would you like to support someone with this booking?</p>
+    <button>Yes, I want to help!</button>
+    <button>No, thank you</button>
+</div>
+
+<script>
+    // Example Gamification Logic
+    const bookings = 5; // sample number
+    const level = bookings >= 10 ? 'Helper Master 🏆' : bookings >= 5 ? 'Kind Traveler 🌍' : 'New Helper';
+    console.log("User Level:", level);
+
+    // Show popup before booking
+    window.onload = function() {
+        setTimeout(() => {
+            document.getElementById("supportPopup").style.display = "block";
+        }, 3000);
+    }
+</script>
 
  <script src="main.js"></script>
 
