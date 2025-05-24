@@ -1,0 +1,316 @@
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+.slideshow {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slideshow img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    object-fit: cover;
+}
+.slideshow img.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+.slideshow::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    z-index: 1;
+}
+.title {
+    font-size: 24px; 
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid orange;
+    animation: blink 0.7s infinite;
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+header {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 50px 0;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('world.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+
+header .title {
+    font-size: 4rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+
+nav {
+    background-color: #333;
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f39c12;
+}
+
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #f39c12;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.countries-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.countries-section h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.country-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.country-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.country-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 12px 12px 0 0;
+}
+
+.country-card:hover img {
+    transform: scale(1.1);
+}
+
+.country-card h3 {
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #333;
+    padding: 0 20px;
+}
+
+.country-card p {
+    font-size: 1.1rem;
+    color: #555;
+    padding: 0 20px 20px;
+    margin-bottom: 20px;
+}
+
+.country-card a {
+    display: inline-block;
+    margin: 0 20px 20px;
+    padding: 14px 30px;
+    background-color: #f39c12;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.country-card a:hover {
+    background-color: #e67e22;
+    transform: translateY(-5px);
+}
+
+.accordion-button {
+    background-color: #ffffff;
+    color: #333;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.accordion-button:hover {
+    background-color: #e9ecef;
+}
+.accordion-item {
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.accordion-body {
+    background-color: #ffffff;
+}
+.nav-tabs .nav-link {
+    color: #495057;
+    font-weight: 500;
+}
+.nav-tabs .nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 5px;
+}
+.tab-content {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+footer {
+    padding: 30px 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#backToTop:hover {
+    background-color: #555;
+}
+
+
+.country-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.country-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid orange;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        border-color: orange;
+    }
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    header .title {
+        font-size: 2.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    header .title {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+}
