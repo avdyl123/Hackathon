@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Page</title>
+  <style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #eef2f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #1f2937;
+    }
+
+   
+    .hotel-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 10px;
+    }
+
+ 
+    .hotel {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hotel:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    }
+    .hotel h2 {
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      color: #111827;
+      font-size: 1.5rem;
+    }
+    .hotel p {
+      margin: 6px 0;
+      font-size: 1rem;
+      color: #4b5563;
+      flex-grow: 1;
+    }
+
+   
+    .hotel button {
+      margin-top: 18px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hotel button:hover:not(:disabled) {
+      background: #2563eb;
+      box-shadow: 0 6px 16px rgba(37,99,235,0.6);
+    }
+    .hotel button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    
+    #booking-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(31,41,55, 0.75);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+   
+    #booking-modal .modal-content {
+      background: #f9fafb;
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      padding: 30px 35px;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.15);
+      position: relative;
+      text-align: center;
+      animation: modalFadeIn 0.35s ease forwards;
+    }
+
+    @keyframes modalFadeIn {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    #booking-modal h2 {
+      margin-top: 0;
+      color: #111827;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    #booking-modal p {
+      margin: 12px 0;
+      font-size: 1.1rem;
+      color: #4b5563;
+    }
+
+    
+    #booking-modal .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #6b7280;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+    #booking-modal .close-btn:hover {
+      color: #111827;
+    }
+
+
+    #confirm-booking-btn {
+      margin-top: 25px;
+      padding: 14px 0;
+      width: 100%;
+      font-size: 1.2rem;
+      background: #10b981;
+      color: white;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(16,185,129,0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #confirm-booking-btn:hover:not(:disabled) {
+      background: #059669;
+      box-shadow: 0 8px 22px rgba(5,150,105,0.6);
+    }
+    #confirm-booking-btn:disabled {
+      background: #6ee7b7;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    #payment-link {
+      margin-top: 28px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #059669;
+      word-break: break-word;
+    }
+    #payment-link a {
+      color: #047857;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    #payment-link a:hover {
+      text-decoration: underline;
+    }
+
+    
+    .date-inputs {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+    .date-inputs label {
+      flex: 1;
+      font-weight: 600;
+      color: #111827;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .date-inputs input {
+      margin-top: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #d1d5db;
+      font-size: 1rem;
+      outline-color: #3b82f6;
+    }
+
+    
+    @media (max-width: 500px) {
+      .hotel-list {
+        grid-template-columns: 1fr;
+      }
+      #booking-modal .modal-content {
+        padding: 25px 20px;
+      }
+      .date-inputs {
+        flex-direction: column;
+      }
+      .date-inputs label {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Booking Hotels</h1>
+  <div class="hotel-list" id="hotel-list">
+
+  </div>
+
+ 
+  <div id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-hotel-name" tabindex="-1">
+    <div class="modal-content">
+      <span class="close-btn" id="modal-close" aria-label="Close modal">&times;</span>
+      <h2 id="modal-hotel-name"></h2>
+      <p><strong>Location:</strong> <span id="modal-hotel-location"></span></p>
+      <p><strong>Rooms Available:</strong> <span id="modal-hotel-rooms"></span></p>
+      <p><strong>Price per night:</strong> $<span id="modal-hotel-price"></span></p>
+      <p style="color:#059669; font-weight:700; margin-bottom: 20px;">
+        20% of this booking supports employment for individuals with special needs.
+      </p>
+
+     
+      <div class="date-inputs">
+        <label>
+          Check-in Date:
+          <input type="date" id="checkin-date" required />
+        </label>
+        <label>
+          Check-out Date:
+          <input type="date" id="checkout-date" required />
+        </label>
+      </div>
+
+      <button id="confirm-booking-btn">Confirm Booking</button>
+
+      <div id="payment-link" style="display:none;">
+        Thank you for your booking! Please proceed to payment here:  
+        <a href="https://www.example-payment.com" target="_blank" id="payment-url" rel="noopener noreferrer">Pay Now</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const hotels = [
+      { name: "Luxury Hotel in Rome", location: "Rome, Italy", roomsAvailable: 5, pricePerNight: 120 },
+      { name: "Canal-side Hotel ", location: "Venice, Italy", roomsAvailable: 3, pricePerNight: 150 },
+      { name: "Boutique Hotel", location: "Florence, Italy", roomsAvailable: 4, pricePerNight: 130 },
+      { name: "Fashion District Hotel", location: "Milan, Italy", roomsAvailable: 6, pricePerNight: 140 },
+      { name: "Naples Retreat", location: "Naples, Italy", roomsAvailable: 2, pricePerNight: 110 },
+      { name: "Villa in Tuscany", location: "Sicily, Italy", roomsAvailable: 3, pricePerNight: 125 },
+    ];
+
+    const hotelListDiv = document.getElementById('hotel-list');
+    const modal = document.getElementById('booking-modal');
+    const modalCloseBtn = document.getElementById('modal-close');
+    const confirmBookingBtn = document.getElementById('confirm-booking-btn');
+    const paymentLinkDiv = document.getElementById('payment-link');
+
+    const checkinInput = document.getElementById('checkin-date');
+    const checkoutInput = document.getElementById('checkout-date');
+
+    let currentHotelIndex = null;
+
+    function renderHotels() {
+      hotelListDiv.innerHTML = '';
+      hotels.forEach((hotel, index) => {
+        const hotelDiv = document.createElement('div');
+        hotelDiv.className = 'hotel';
+        hotelDiv.innerHTML = `
+          <h2>${hotel.name}</h2>
+          <p><strong>Location:</strong> ${hotel.location}</p>
+          <p><strong>Rooms Available:</strong> ${hotel.roomsAvailable}</p>
+          <p><strong>Price per night:</strong> $${hotel.pricePerNight}</p>
+          <button ${hotel.roomsAvailable === 0 ? 'disabled' : ''} data-index="${index}">Book Now</button>
+        `;
+        hotelListDiv.appendChild(hotelDiv);
+      });
+    }
+
+    function openModal(index) {
+      currentHotelIndex = index;
+      const hotel = hotels[index];
+      document.getElementById('modal-hotel-name').textContent = hotel.name;
+      document.getElementById('modal-hotel-location').textContent = hotel.location;
+      document.getElementById('modal-hotel-rooms').textContent = hotel.roomsAvailable;
+      document.getElementById('modal-hotel-price').textContent = hotel.pricePerNight;
+
+    
+      checkinInput.value = '';
+      checkoutInput.value = '';
+      paymentLinkDiv.style.display = 'none';
+      confirmBookingBtn.style.display = 'inline-block';
+      confirmBookingBtn.disabled = false;
+
+    
+      const todayStr = new Date().toISOString().split('T')[0];
+      checkinInput.min = todayStr;
+      checkoutInput.min = todayStr;
+
+      modal.style.display = 'flex';
+      modal.focus();
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      currentHotelIndex = null;
+    }
+
+    function validateDates() {
+      const checkin = checkinInput.value;
+      const checkout = checkoutInput.value;
+
+      if (!checkin || !checkout) {
+        return false;
+      }
+      if (checkin >= checkout) {
+        return false;
+      }
+      return true;
+    }
+
+    checkinInput.addEventListener('change', () => {
+      if (checkinInput.value) {
+        const nextDay = new Date(checkinInput.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkoutInput.min = nextDay.toISOString().split('T')[0];
+        // Auto-clear checkout if before min
+        if (checkoutInput.value && checkoutInput.value < checkoutInput.min) {
+          checkoutInput.value = '';
+        }
+      } else {
+        checkoutInput.min = new Date().toISOString().split('T')[0];
+      }
+      confirmBookingBtn.disabled = !validateDates();
+    });
+
+    checkoutInput.addEventListener('change', () => {
+      confirmBookingBtn.disabled = !validateDates();
+    });
+
+    
+    hotelListDiv.addEventListener('click', e => {
+      if (e.target.tagName === 'BUTTON' && e.target.dataset.index) {
+        openModal(parseInt(e.target.dataset.index));
+      }
+    });
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Confirm booking handler
+    confirmBookingBtn.addEventListener('click', () => {
+      if (!validateDates()) {
+        alert('Please enter valid check-in and check-out dates.');
+        return;
+      }
+     
+
+      const hotel = hotels[currentHotelIndex];
+      hotel.roomsAvailable--;
+      renderHotels();
+
+      
+      confirmBookingBtn.style.display = 'none';
+      paymentLinkDiv.style.display = 'block';
+
+      const paymentUrl = 'https://www.paypal.com/paypalme/YourBusinessName';
+      document.getElementById('payment-url').href = paymentUrl;
+    });
+
+    // Initial render
+    renderHotels();
+
+  </script>
+</body>
+</html>
