@@ -211,12 +211,12 @@ function validation() {
 
 const toggleButton = document.getElementById('themeToggle');
 
-  // Set the icon based on theme
+  
   function setThemeIcon() {
       toggleButton.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
   }
 
-  // Show/hide the button when scrolling
+  
   window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
           toggleButton.style.display = 'block';
@@ -225,7 +225,7 @@ const toggleButton = document.getElementById('themeToggle');
       }
   });
 
-  // Toggle light/dark mode
+ 
   toggleButton.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
       const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
@@ -233,9 +233,9 @@ const toggleButton = document.getElementById('themeToggle');
       setThemeIcon();
   });
 
-  // Load saved theme from localStorage
   if (localStorage.getItem('theme') === 'light') {
       document.body.classList.add('light-mode');
   }
 
   setThemeIcon();
+  

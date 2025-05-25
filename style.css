@@ -394,3 +394,13 @@ body.light-mode #supportPopup {
     background-color: #ffffff;
     border: 1px solid #ccc;
 }
+
+#supportPopup {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#supportPopup.show {
+    opacity: 1;
+}
+

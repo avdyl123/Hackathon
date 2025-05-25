@@ -33,7 +33,7 @@
         <li><a href="contact.html">Contact</a></li>
     </ul>
 </nav>
-<button onclick="document.body.classList.toggle('light-mode')">Toggle Light/Dark</button>
+
 
 <section class="countries-section" id="countries">
     <h2>Top 10 Countries</h2>
@@ -137,23 +137,44 @@
     <p>&copy; 2025 Travel for Good. All rights reserved.</p>
 </footer>
 
-<div id="supportPopup" style="display:none;">
+<div id="supportPopup" style="display: none;">
     <p>Would you like to support someone with this booking?</p>
-    <button>Yes, I want to help!</button>
-    <button>No, thank you</button>
+    <button id="yesSupport">Yes, I want to help!</button>
+    <button id="noSupport">No, thank you</button>
 </div>
 
+
 <script>
-    const bookings = 5; 
-    const level = bookings >= 10 ? 'Helper Master 🏆' : bookings >= 5 ? 'Kind Traveler 🌍' : 'New Helper';
+    const bookings = 5;
+    const level = bookings >= 10 ? 'Helper Master 🏆' :
+                  bookings >= 5 ? 'Kind Traveler 🌍' :
+                  'New Helper';
+
     console.log("User Level:", level);
 
-    window.onload = function() {
+    window.onload = function () {
         setTimeout(() => {
-            document.getElementById("supportPopup").style.display = "block";
+            const popup = document.getElementById("supportPopup");
+            popup.style.display = "block"; // Show and KEEP it visible
         }, 3000);
-    }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById("supportPopup");
+
+        // Optional: action for clicking "Yes"
+        document.getElementById('yesSupport').onclick = () => {
+            popup.style.display = "none";
+            alert("Thanks for supporting! 💖");
+        };
+
+        document.getElementById('noSupport').onclick = () => {
+            popup.style.display = "none";
+        };
+    });
 </script>
+
+
 
   
 
