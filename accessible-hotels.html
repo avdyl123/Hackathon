@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessible Hotels Worldwide</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #1a73e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      color: white;
+      flex-wrap: wrap;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: white;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #a8c1f8;
+    }
+
+    /* Header */
+    header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 2rem 2rem 3rem;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Main container */
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Country Section */
+    .country-hotels {
+      margin-bottom: 3rem;
+    }
+    .country-hotels h2 {
+      font-size: 1.8rem;
+      color: #222;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #1a73e8;
+      padding-bottom: 0.3rem;
+    }
+
+    /* Hotel List Flex Row with wrap */
+    .hotel-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: flex-start;
+    }
+
+    /* Hotel Card */
+    .hotel-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 320px;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .hotel-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .hotel-info {
+      padding: 1rem 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hotel-info h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      color: #1a73e8;
+    }
+    .hotel-info p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 0.6rem;
+    }
+    .tags {
+      margin-bottom: 0.7rem;
+    }
+    .tags span {
+      display: inline-block;
+      background-color: #e8f0fe;
+      color: #1a73e8;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      margin: 0.2rem 0.2rem 0.2rem 0;
+      user-select: none;
+    }
+    .book-button {
+      align-self: flex-start;
+      background-color: #1a73e8;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+    .book-button:hover {
+      background-color: #0e58c4;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #eee;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+        gap: 1rem;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      .hotel-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">AccessibleTravel</div>
+    <ul>
+      <li><a href="#france">France</a></li>
+      <li><a href="#japan">Japan</a></li>
+      <li><a href="#usa">USA</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Accessible Hotels Around the World</h1>
+    <p>Discover carefully selected hotels offering facilities for travelers with special needs — from wheelchair access to sensory-friendly support.</p>
+  </header>
+
+  <main>
+    <!-- France -->
+    <section class="country-hotels" id="france">
+      <h2>🇫🇷 France</h2>
+      <div class="hotel-list">
+
+        <article class="hotel-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/AccorHotels_Arena%2C_Paris_2016.jpg/640px-AccorHotels_Arena%2C_Paris_2016.jpg" alt="AccorHotels Paris" />
+          <div class="hotel-info">
+            <h3>AccorHotels Arena</h3>
+            <p><strong>Location:</strong> Paris</p>
+            <p>Offers ADA-compliant rooms, wheelchair access, braille signage, and support for service animals.</p>
+            <div class="tags">
+              <span>♿ Wheelchair Friendly</span>
+              <span>🐕 Service Animal Support</span>
+              <span>🛏 Accessible Rooms</span>
+            </div>
+            <button class="book-button">Book Now</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Japan -->
+    <section class="country-hotels" id="japan">
+      <h2>🇯🇵 Japan</h2>
+      <div class="hotel-list">
+
+        <article class="hotel-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Hotel_New_Otani_Tokyo_Main.jpg/640px-Hotel_New_Otani_Tokyo_Main.jpg" alt="Hotel New Otani Tokyo" />
+          <div class="hotel-info">
+            <h3>Hotel New Otani Tokyo</h3>
+            <p><strong>Location:</strong> Tokyo</p>
+            <p>Includes step-free access, visual fire alarms, barrier-free bathrooms, and multilingual accessible support.</p>
+            <div class="tags">
+              <span>♿ Step-Free Access</span>
+              <span>🔔 Visual Alarms</span>
+              <span>🛁 Roll-In Shower</span>
+            </div>
+            <button class="book-button">Book Now</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- USA -->
+    <section class="country-hotels" id="usa">
+      <h2>🇺🇸 United States</h2>
+      <div class="hotel-list">
+
+        <article class="hotel-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Marriott_Marquis_DC_Exterior_2017.jpg/640px-Marriott_Marquis_DC_Exterior_2017.jpg" alt="Marriott Marquis DC" />
+          <div class="hotel-info">
+            <h3>Marriott Marquis</h3>
+            <p><strong>Location:</strong> Washington, D.C.</p>
+            <p>Offers TTY devices, hearing loops, accessible elevators, and ADA bathrooms with grab bars.</p>
+            <div class="tags">
+              <span>🔊 Hearing Loop</span>
+              <span>🚪 Wide Doorways</span>
+              <span>🛗 Elevator Access</span>
+            </div>
+            <button class="book-button">Book Now</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>© 2025 Accessible Travel. Inclusive journeys start here.</p>
+  </footer>
+
+</body>
+</html>
