@@ -14,6 +14,7 @@
       margin: 0;
       background: #f0f8ff;
       color: #222;
+      scroll-behavior: smooth;
     }
     a {
       text-decoration: none;
@@ -29,6 +30,10 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
     nav .logo {
       font-weight: bold;
@@ -159,6 +164,7 @@
   <nav>
     <div class="logo">BeachExplorer</div>
     <ul>
+      <li><a href="index.html">Home</a></li>
       <li><a href="#maldives">Maldives</a></li>
       <li><a href="#bora-bora">Bora Bora</a></li>
       <li><a href="#maui">Maui</a></li>
@@ -166,7 +172,7 @@
     </ul>
   </nav>
 
-  <header>
+  <header id="home">
     <h1>Beautiful Beaches Around the World</h1>
     <p>Explore pristine shores and turquoise waters — perfect places to relax, unwind, and soak in nature's beauty.</p>
   </header>
@@ -178,7 +184,7 @@
         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80" alt="Maldives Beach" />
         <div class="beach-info">
           <h3>Maldives</h3>
-          <p>Crystal-clear waters, white sandy beaches, and vibrant coral reefs make Maldives a tropical paradise.</p>
+          <p>Crystal-clear waters, white sandy beaches, and vibrant coral reefs make Maldives a tropical paradise. Accessible resorts with specialized services for people with disabilities ensure comfort for everyone.</p>
           <div class="location">Indian Ocean</div>
         </div>
       </article>
@@ -187,7 +193,7 @@
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=640&q=80" alt="Bora Bora Beach" />
         <div class="beach-info">
           <h3>Bora Bora</h3>
-          <p>Famous for its turquoise lagoon protected by a coral reef, perfect for snorkeling and luxury resorts.</p>
+          <p>Famous for its turquoise lagoon protected by a coral reef, perfect for snorkeling and luxury resorts. Many resorts provide wheelchair-friendly access and tailored activities for guests with special needs.</p>
           <div class="location">French Polynesia</div>
         </div>
       </article>
@@ -196,7 +202,7 @@
         <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=640&q=80" alt="Maui Beach" />
         <div class="beach-info">
           <h3>Maui</h3>
-          <p>Beautiful beaches combined with volcanic landscapes offer unique sunsets and outdoor adventures.</p>
+          <p>Beautiful beaches combined with volcanic landscapes offer unique sunsets and outdoor adventures. Maui offers accessible trails and beach access points to make nature enjoyment inclusive.</p>
           <div class="location">Hawaii, USA</div>
         </div>
       </article>
@@ -205,7 +211,7 @@
         <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=640&q=80" alt="Navagio Beach" />
         <div class="beach-info">
           <h3>Navagio Beach</h3>
-          <p>Also known as Shipwreck Beach, a stunning cove with white sand surrounded by towering limestone cliffs.</p>
+          <p>Also known as Shipwreck Beach, a stunning cove with white sand surrounded by towering limestone cliffs. While access requires boat rides, special arrangements are available for visitors with mobility challenges.</p>
           <div class="location">Zakynthos, Greece</div>
         </div>
       </article>
@@ -214,7 +220,7 @@
         <img src="https://images.unsplash.com/photo-1465311443279-4f6e63d93ab9?auto=format&fit=crop&w=640&q=80" alt="Whitehaven Beach" />
         <div class="beach-info">
           <h3>Whitehaven Beach</h3>
-          <p>Famous for its pure white silica sand and crystal clear blue water, accessible only by boat or helicopter.</p>
+          <p>Famous for its pure white silica sand and crystal clear blue water, accessible only by boat or helicopter. Operators offer accessible tours and facilities to accommodate guests with special needs.</p>
           <div class="location">Queensland, Australia</div>
         </div>
       </article>
@@ -228,3 +234,4 @@
 
 </body>
 </html>
+

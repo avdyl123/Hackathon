@@ -23,20 +23,10 @@
                 <span>🚗 All Transfers</span>
                 <span>📜 City Tours</span>
             </div>
-            <button class="book-now">Book Now</button>
+            <a href="booking.html" class="read-more-btn">Book in</a>
         </div>
     </header>
 
-    <header>
-        <div class="slideshow">
-            <img src="italy.png" class="active" alt="World Travel">
-            <img src="32.jpg" alt="Adventure Travel">
-            <img src="33.jpg" alt="Cultural Travel">
-            
-        </div>
-
-        <div class="title">Explore Italy</div>
-    </header>
 
 <nav>
     <ul>
@@ -300,18 +290,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    const slides = document.querySelectorAll('.slideshow img');
-    let currentIndex = 0;
-  
-    function showNextSlide() {
-      slides[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.add('active');
-    }
-  
-    setInterval(showNextSlide, 4000); // ndryshon imazhin çdo 4 sekonda
-  </script>
+
+
 <script src="main.js"></script>
 
 </body>
