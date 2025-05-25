@@ -239,3 +239,25 @@ const toggleButton = document.getElementById('themeToggle');
 
   setThemeIcon();
   
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slideshow img');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Trego slide-in e parë
+    showSlide(currentSlide);
+
+    // Ndrysho slide çdo 3 sekonda (3000 ms)
+    setInterval(nextSlide, 3000);
+});

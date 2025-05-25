@@ -17,55 +17,91 @@ body {
     padding: 0;
 }
 
-header {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
     position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    background: linear-gradient(to right, var(--green), var(--white), var(--red));
-    padding: 20px 10px;
-    color: var(--dark-gray);
-    font-weight: bold;
-    font-size: 2.5rem;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-}
-.slideshow img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.slideshow img.active {
-    opacity: 1;
-    position: relative;
-}
-
-.title {
-    position: absolute;
-    bottom: 20px;
-    left: 30px;
-    font-size: 3rem;
+    padding: 2rem;
+    overflow: hidden;
     color: white;
-    font-weight: 700;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
+.hero-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45); /* për overlay efekt */
+    z-index: 0;
+}
 
-  header {
-    text-align: center;
-    margin-top: 20px;
-  }
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
 
-  .title {
-    font-size: 28px;
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 span {
+    color: #f8d36f;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #f8d36f;
+    color: #333;
+    text-decoration: none;
     font-weight: bold;
-    margin-top: 10px;
-  }
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
+.read-more-btn:hover {
+    background-color: #f5c518;
+}
+
+/* Responsive për mobile */
+@media (max-width: 768px) {}
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .read-more-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
 
 nav {
     background-color: var(--green);
@@ -365,134 +401,4 @@ h2 {
 
 .nav-btn:hover {
     background-color: var(--red);
-}
-
-/* Hero Section */
-
-.hero-section {
-    background: url('colosseum.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.hero-content h1 span {
-    color: #007bff;
-}
-
-.hero-content .duration {
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.hero-content .price {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 15px 0;
-}
-
-.hero-content .features {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-}
-
-.hero-content .features span {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px 15px;
-    border-radius: 20px;
-    font-size: 1rem;
-}
-
-.book-now {
-    background: #007bff;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.book-now:hover {
-    background: #0056b3;
-}
-
-/* Popular Destinations Section */
-
-.popular-destinations {
-    padding: 40px 20px;
-    text-align: center;
-    background: #f9f9f9;
-}
-
-.popular-destinations h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.destination-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    justify-items: center;
-}
-
-.destination-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.destination-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.destination-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
-
-.destination-card p {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #555;
 }
