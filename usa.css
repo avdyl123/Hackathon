@@ -82,74 +82,70 @@
 }
 
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #222;
+    padding: 20px;
+    margin: 0;
+}
+
 /* Navbar */
 nav {
-    background-color: #009b3a; /* Jeshile */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: #2a5d34;  /* gjelbër natyror */
+    padding: 10px 0;
+    text-align: center;
 }
 
 nav ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
-    padding: 0.8rem 0;
-}
-
-nav ul li {
-    margin: 0 1.5rem;
+    gap: 25px;
 }
 
 nav ul li a {
-    color: #fedf00; /* Verdhe */
+    color: #e6f2e6;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 nav ul li a:hover {
-    color: #004d7a; /* Blu e thelle për hover */
+    color: #a3c293;
 }
 
-/* Seksionet e seksioneve */
-.section {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+/* Seksionet */
+.section, section {
+    margin-bottom: 50px;
 }
 
-.section h2 {
-    color: #009b3a; /* Jeshile */
-    margin-bottom: 1rem;
-    border-bottom: 3px solid #fedf00; /* Verdhe */
-    display: inline-block;
-    padding-bottom: 0.2rem;
-    font-weight: 700;
-    font-size: 2rem;
+/* Tituj */
+h2 {
+    color: #2a5d34;
+    margin-bottom: 20px;
 }
 
-/* Grid për kartat */
+/* Grid 3 kolona fikse */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 /* Kartat */
 .card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.15);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    transition: transform 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
 }
 
 .card img {
@@ -159,133 +155,151 @@ nav ul li a:hover {
 }
 
 .card h3 {
-    margin: 1rem;
-    color: #004d7a; /* Blu e thelle */
+    margin: 15px;
+    color: #1f3d1f;
 }
 
 .card p {
-    margin: 0 1rem 1rem;
-    flex-grow: 1;
-    color: #555;
-    font-size: 1rem;
+    margin: 0 15px 15px;
+    color: #4a4a4a;
+    font-size: 14px;
 }
 
 .card a {
-    display: block;
-    background-color: #fedf00; /* Verdhe */
-    color: #004d7a; /* Blu e thelle */
-    text-align: center;
-    padding: 0.7rem 1rem;
-    margin: 1rem;
+    display: inline-block;
+    margin: 0 15px 15px;
+    padding: 8px 12px;
+    background: #4caf50;
+    color: white;
+    text-decoration: none;
     border-radius: 5px;
     font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
 }
 
 .card a:hover {
-    background-color: #009b3a; /* Jeshile */
-    color: white;
+    background: #388e3c;
 }
 
-/* Seksionet tjera */
-.highlights, .videos, .testimonials, .events-travel, .image-gallery {
-    max-width: 1000px;
-    margin: 3rem auto;
-    padding: 0 1rem;
+/* Responsive: 1 kolone në mobil */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.highlights h2, .videos h2, .testimonials h2, .events-travel h2, .image-gallery h2 {
-    color: #009b3a;
-    border-bottom: 3px solid #fedf00;
-    padding-bottom: 0.3rem;
-    margin-bottom: 1rem;
+/* Seksione Highlights & Testimonials */
+.highlights, .testimonials {
+    background: #e6f2e6;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    color: #2a5d34;
 }
 
 .highlights ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    color: #333;
-    font-size: 1.1rem;
+    list-style: disc inside;
+    margin-top: 10px;
 }
 
-.videos .video-container {
+.testimonials blockquote {
+    font-style: italic;
+    margin: 15px 0;
+    border-left: 4px solid #4caf50;
+    padding-left: 12px;
+    color: #356732;
+}
+
+/* Videos */
+.videos {
+    margin-bottom: 40px;
+    color: #2a5d34;
+}
+
+.video-container {
     display: flex;
+    gap: 20px;
     flex-wrap: wrap;
-    gap: 1rem;
     justify-content: center;
 }
 
-.videos iframe {
-    border-radius: 10px;
+.video-container iframe {
     max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Events and Travel Deals side by side */
+.events-travel {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    color: #2a5d34;
+}
+
+.events, .travel-deals {
     flex: 1 1 300px;
+    background: #f0f7f0;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-/* Testimoniale */
-.testimonials blockquote {
-    background-color: #009b3a;
-    color: #fff;
-    border-left: 8px solid #fedf00;
-    margin: 1rem 0;
-    padding: 1rem 1.5rem;
-    font-style: italic;
-    border-radius: 5px;
+.events h2, .travel-deals h2 {
+    margin-bottom: 15px;
 }
 
-/* Events & travel deals */
 .events ul, .travel-deals ul {
-    list-style-type: none;
+    list-style: none;
     padding-left: 0;
 }
 
-.events ul li, .travel-deals ul li {
-    margin: 0.7rem 0;
-    font-weight: 600;
-    color: #004d7a;
+.events li, .travel-deals li {
+    margin-bottom: 10px;
 }
 
-.travel-deals ul li a {
-    color: #009b3a;
+.travel-deals a {
+    color: #4caf50;
     text-decoration: none;
-    font-weight: 700;
-    transition: color 0.3s ease;
+    font-weight: 600;
 }
 
-.travel-deals ul li a:hover {
-    color: #fedf00;
+.travel-deals a:hover {
+    text-decoration: underline;
 }
 
-/* Gallery */
+/* Image Gallery grid */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .gallery-grid img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
 }
 
 .gallery-grid img:hover {
     transform: scale(1.05);
 }
 
-/* Modal fullscreen */
+/* Fullscreen modal styles */
 .fullscreen-modal {
-    display: none;
+    display: none; /* Hide initially */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 1000;
     flex-direction: column;
 }
 
@@ -293,49 +307,55 @@ nav ul li a:hover {
     display: flex;
 }
 
-.fullscreen-img {
-    max-width: 90%;
-    max-height: 80vh;
-    border-radius: 10px;
-}
-
 .close-btn {
     position: absolute;
     top: 20px;
     right: 30px;
-    font-size: 2.5rem;
+    font-size: 36px;
     color: white;
     cursor: pointer;
-    font-weight: bold;
+}
+
+.fullscreen-img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
 }
 
 .nav-buttons {
-    margin-top: 1rem;
+    margin-top: 15px;
 }
 
 .nav-btn {
-    background-color: #fedf00;
+    background-color: #4caf50;
+    color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
+    padding: 10px 18px;
+    margin: 0 10px;
     border-radius: 5px;
-    font-weight: 700;
     cursor: pointer;
-    color: #004d7a;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .nav-btn:hover {
-    background-color: #009b3a;
-    color: white;
+    background-color: #388e3c;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav ul {
+/* Responsive for gallery & events-travel */
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .events-travel {
         flex-direction: column;
     }
-    nav ul li {
-        margin: 0.5rem 0;
+}
+
+@media (max-width: 500px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 }
+

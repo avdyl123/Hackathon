@@ -176,75 +176,125 @@ nav ul li a:hover {
     background-color: #f5c518;
 }
 
-/* Highlights & Testimonials */
-.highlights, .testimonials, .events-travel {
-    padding: 3rem 2rem;
-    background-color: #f0f0f0;
-}
-
-.highlights h2,
-.testimonials h2,
-.events h2,
-.travel-deals h2,
-.embedded-videos h2 {
-    text-align: center;
+/* General Reset and Fonts */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
     color: #333;
-    margin-bottom: 1.5rem;
 }
 
-.highlights ul, .events ul, .travel-deals ul {
-    list-style: disc;
-    padding-left: 2rem;
+h2 {
+    text-align: center;
+    color: #3a3a3a;
+    margin-top: 40px;
 }
 
+section {
+    padding: 40px 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li::before {
+    content: "🇫🇷 ";
+    margin-right: 10px;
+    color: #2c3e50;
+}
+
+/* Highlights Section */
+.highlights ul li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Testimonials */
 .testimonials blockquote {
     font-style: italic;
-    margin: 1rem auto;
-    max-width: 600px;
-    border-left: 5px solid #f8d36f;
-    padding-left: 1rem;
+    margin: 20px auto;
+    padding: 20px;
+    border-left: 5px solid #f39c12;
+    background-color: #fcf3cf;
+    max-width: 800px;
 }
 
-/* Embedded Videos */
+/* Video Section */
 .video-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 20px;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .video-container iframe {
     width: 100%;
     max-width: 560px;
     height: 315px;
+    border-radius: 10px;
     border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Events and Travel */
+/* Events and Travel Deals */
 .events-travel {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 2rem;
+    gap: 40px;
+    justify-content: space-between;
 }
 
-/* Gallery */
+.events, .travel-deals {
+    flex: 1 1 45%;
+    background-color: #f0f3f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.events ul li, .travel-deals ul li {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.travel-deals a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.travel-deals a:hover {
+    text-decoration: underline;
+}
+
+/* Image Gallery */
 .image-gallery {
-    padding: 4rem 2rem;
-    background-color: #fff;
+    text-align: center;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
 }
 
 .gallery-grid img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
-    cursor: pointer;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .gallery-grid img:hover {
@@ -255,55 +305,47 @@ nav ul li a:hover {
 .fullscreen-modal {
     display: none;
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
     justify-content: center;
+    align-items: center;
+    z-index: 9999;
     flex-direction: column;
 }
 
 .fullscreen-img {
     max-width: 90%;
-    max-height: 80vh;
-    border: 5px solid white;
+    max-height: 80%;
+    margin-bottom: 20px;
     border-radius: 10px;
 }
 
 .close-btn {
     position: absolute;
-    top: 2rem;
-    right: 3rem;
-    font-size: 3rem;
-    color: white;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
     cursor: pointer;
 }
 
 .nav-buttons {
-    margin-top: 1rem;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-btn {
-    padding: 0.75rem 1.5rem;
-    background: #f8d36f;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ffffff;
     border: none;
-    margin: 0 1rem;
-    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
 }
 
 .nav-btn:hover {
-    background: #f5c518;
-}
-
-/* Responsive Fix */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .read-more-btn {
-        padding: 0.5rem 1rem;
-    }
+    background-color: #e1e1e1;
 }
