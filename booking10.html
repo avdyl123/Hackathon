@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Page - Multi-country Hotels</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #eef2f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2 {
+      text-align: center;
+      font-weight: 700;
+      color: #1f2937;
+    }
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    nav {
+      background-color: #1f2937;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #d1d5db;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a:hover {
+      color: #3b82f6;
+    }
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
+    .hotel-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 10px;
+    }
+    .hotel {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hotel:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    }
+    .hotel h3 {
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      color: #111827;
+      font-size: 1.3rem;
+    }
+    .hotel p {
+      margin: 6px 0;
+      font-size: 1rem;
+      color: #4b5563;
+    }
+    form {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    label {
+      font-weight: 600;
+      color: #111827;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    input[type="date"] {
+      margin-top: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #d1d5db;
+      font-size: 1rem;
+      outline-color: #3b82f6;
+    }
+    button.book-btn {
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button.book-btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    button.book-btn:hover:not(:disabled) {
+      background: #2563eb;
+      box-shadow: 0 6px 16px rgba(37,99,235,0.6);
+    }
+    .success-msg {
+      margin-top: 10px;
+      color: #059669;
+      font-weight: 700;
+    }
+    @media (max-width: 500px) {
+      .hotel-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">TravelEase</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="swi.html">Switzerland</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Booking Hotels</h1>
+
+  <section>
+    <h2>Hotels in Switzerland</h2>
+    <div class="hotel-list" id="switzerland-hotels"></div>
+  </section>
+
+  <section>
+    <h2>Hotels in France</h2>
+    <div class="hotel-list" id="france-hotels"></div>
+  </section>
+
+  <section>
+    <h2>Hotels in Italy</h2>
+    <div class="hotel-list" id="italy-hotels"></div>
+  </section>
+
+  <script>
+    const hotels = [
+      // Switzerland
+      { name: "The Dolder Grand", location: "Zurich, Switzerland", roomsAvailable: 4, pricePerNight: 120, country: "switzerland" },
+      { name: "Gstaad Palace", location: "Alps, Switzerland", roomsAvailable: 3, pricePerNight: 150, country: "switzerland" },
+      { name: "Fairmont Le Montreux Palace", location: "Montreux, Switzerland", roomsAvailable: 3, pricePerNight: 140, country: "switzerland" },
+      { name: "Badrutt's Palace Hotel", location: "St. Moritz, Switzerland", roomsAvailable: 2, pricePerNight: 110, country: "switzerland" },
+      { name: "Hotel Villa Honegg", location: "Lake Lucerne, Switzerland", roomsAvailable: 1, pricePerNight: 125, country: "switzerland" },
+      // France
+      { name: "Hotel Paris Luxe", location: "Paris, France", roomsAvailable: 5, pricePerNight: 130, country: "france" },
+      { name: "Château de Versailles Hotel", location: "Versailles, France", roomsAvailable: 3, pricePerNight: 160, country: "france" },
+      { name: "Nice Beach Resort", location: "Nice, France", roomsAvailable: 4, pricePerNight: 115, country: "france" },
+      // Italy
+      { name: "Hotel Rome Central", location: "Rome, Italy", roomsAvailable: 3, pricePerNight: 110, country: "italy" },
+      { name: "Venice Canal Hotel", location: "Venice, Italy", roomsAvailable: 2, pricePerNight: 140, country: "italy" },
+      { name: "Florence Grand Stay", location: "Florence, Italy", roomsAvailable: 4, pricePerNight: 125, country: "italy" },
+    ];
+
+    function renderHotels() {
+      // Clear all lists
+      const switzerlandDiv = document.getElementById('switzerland-hotels');
+      const franceDiv = document.getElementById('france-hotels');
+      const italyDiv = document.getElementById('italy-hotels');
+      switzerlandDiv.innerHTML = '';
+      franceDiv.innerHTML = '';
+      italyDiv.innerHTML = '';
+
+      hotels.forEach((hotel, index) => {
+        const hotelDiv = document.createElement('div');
+        hotelDiv.className = 'hotel';
+
+        hotelDiv.innerHTML = `
+          <h3>${hotel.name}</h3>
+          <p><strong>Location:</strong> ${hotel.location}</p>
+          <p><strong>Rooms Available:</strong> <span id="rooms-${index}">${hotel.roomsAvailable}</span></p>
+          <p><strong>Price per night:</strong> $${hotel.pricePerNight}</p>
+          <p style="color:#059669; font-weight:700; margin-bottom: 10px;">
+            20% of this booking supports employment for individuals with special needs.
+          </p>
+          <form id="form-${index}">
+            <label>
+              Check-in Date:
+              <input type="date" name="checkin" required min="${new Date().toISOString().split('T')[0]}"/>
+            </label>
+            <label>
+              Check-out Date:
+              <input type="date" name="checkout" required min="${new Date().toISOString().split('T')[0]}"/>
+            </label>
+            <button type="submit" class="book-btn" ${hotel.roomsAvailable === 0 ? 'disabled' : ''}>Book Now</button>
+            <div class="success-msg" id="success-${index}" style="display:none;">Booking confirmed! Please proceed to payment.</div>
+          </form>
+        `;
+
+        // Append to correct country's container
+        if (hotel.country === 'switzerland') {
+          switzerlandDiv.appendChild(hotelDiv);
+        } else if (hotel.country === 'france') {
+          franceDiv.appendChild(hotelDiv);
+        } else if (hotel.country === 'italy') {
+          italyDiv.appendChild(hotelDiv);
+        }
+
+        // Form and event listeners
+        const form = document.getElementById(`form-${index}`);
+        const roomsSpan = document.getElementById(`rooms-${index}`);
+        const successMsg = document.getElementById(`success-${index}`);
+
+        const checkinInput = form.querySelector('input[name="checkin"]');
+        const checkoutInput = form.querySelector('input[name="checkout"]');
+        const submitBtn = form.querySelector('button.book-btn');
+
+        checkinInput.addEventListener('change', () => {
+          if (checkinInput.value) {
+            const nextDay = new Date(checkinInput.value);
+            nextDay.setDate(nextDay.getDate() + 1);
+            checkoutInput.min = nextDay.toISOString().split('T')[0];
+            if (checkoutInput.value && checkoutInput.value < checkoutInput.min) {
+              checkoutInput.value = '';
+            }
+          } else {
+            checkoutInput.min = new Date().toISOString().split('T')[0];
+          }
+        });
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!checkinInput.value || !checkoutInput.value) {
+            alert('Please select both check-in and check-out dates.');
+            return;
+          }
+          if (checkinInput.value >= checkoutInput.value) {
+            alert('Check-out date must be after check-in date.');
+            return;
+          }
+          if (hotel.roomsAvailable <= 0) {
+            alert('Sorry, no rooms available.');
+            return;
+          }
+          hotel.roomsAvailable--;
+          roomsSpan.textContent = hotel.roomsAvailable;
+          if (hotel.roomsAvailable === 0) {
+            submitBtn.disabled = true;
+          }
+          successMsg.style.display = 'block';
+        });
+      });
+    }
+
+    renderHotels();
+  </script>
+</body>
+</html>

@@ -1,283 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Accessible Hotels Worldwide</title>
-  <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accessible Hotels Worldwide</title>
+<style>
+  /* Reset & Base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0; padding: 0;
+    color: #333;
+  }
 
-    /* Navbar */
-    nav {
-      background-color: #1a73e8;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      color: white;
-      flex-wrap: wrap;
+  /* Navbar */
+  nav {
+    background-color: #1a73e8;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+  }
+  nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0; padding: 0;
+    flex-wrap: wrap;
+  }
+  nav ul li a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+  }
+  nav ul li a:hover {
+    color: #d3e3fd;
+  }
+
+  /* Main container */
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  /* Group container */
+  .country-group {
+    margin-bottom: 3rem;
+  }
+
+  /* Country Section */
+  .country-section {
+    margin-bottom: 2rem;
+  }
+  .country-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #1a73e8;
+    padding-bottom: 0.3rem;
+  }
+
+  /* Hotel list flex */
+  .hotel-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  /* Hotel card */
+  .hotel-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    overflow: hidden;
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+  .hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+  }
+  .hotel-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .hotel-info {
+    padding: 0.9rem 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hotel-info h3 {
+    margin: 0 0 0.4rem;
+    color: #1a73e8;
+    font-size: 1.2rem;
+  }
+  .hotel-info p {
+    margin: 0 0 0.7rem;
+    font-size: 0.9rem;
+    color: #444;
+  }
+  .tags {
+    margin-bottom: 0.7rem;
+  }
+  .tags span {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #1a73e8;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    margin-right: 0.4rem;
+    user-select: none;
+  }
+  .book-button {
+    background-color: #1a73e8;
+    border: none;
+    padding: 0.45rem 0.85rem;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+  }
+  .book-button:hover {
+    background-color: #0e58c4;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #eee;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hotel-card {
+      flex: 1 1 calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
     }
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
+  }
+  @media (max-width: 600px) {
+    nav {
+      justify-content: center;
     }
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
     }
-    nav ul li a {
-      color: white;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover {
-      color: #a8c1f8;
-    }
-
-    /* Header */
-    header {
-      background-color: #1a73e8;
-      color: white;
-      padding: 2rem 2rem 3rem;
-      text-align: center;
-    }
-    header h1 {
-      margin-bottom: 0.5rem;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* Main container */
-    main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Country Section */
-    .country-hotels {
-      margin-bottom: 3rem;
-    }
-    .country-hotels h2 {
-      font-size: 1.8rem;
-      color: #222;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #1a73e8;
-      padding-bottom: 0.3rem;
-    }
-
-    /* Hotel List Flex Row with wrap */
-    .hotel-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: flex-start;
-    }
-
-    /* Hotel Card */
     .hotel-card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      overflow: hidden;
-      width: 320px;
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
+      flex: 1 1 100%;
+      max-width: 100%;
     }
-    .hotel-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
-    .hotel-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .hotel-info {
-      padding: 1rem 1.2rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .hotel-info h3 {
-      margin-top: 0;
-      font-size: 1.3rem;
-      color: #1a73e8;
-    }
-    .hotel-info p {
-      font-size: 0.95rem;
-      color: #444;
-      margin-bottom: 0.6rem;
-    }
-    .tags {
-      margin-bottom: 0.7rem;
-    }
-    .tags span {
-      display: inline-block;
-      background-color: #e8f0fe;
-      color: #1a73e8;
-      padding: 0.3rem 0.6rem;
-      border-radius: 5px;
-      font-size: 0.75rem;
-      margin: 0.2rem 0.2rem 0.2rem 0;
-      user-select: none;
-    }
-    .book-button {
-      align-self: flex-start;
-      background-color: #1a73e8;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-      border: none;
-      text-align: center;
-    }
-    .book-button:hover {
-      background-color: #0e58c4;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #eee;
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      nav {
-        justify-content: center;
-        gap: 1rem;
-      }
-      nav ul {
-        justify-content: center;
-      }
-      .hotel-card {
-        width: 100%;
-        max-width: 400px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">AccessibleTravel</div>
-    <ul>
-      <li><a href="#france">France</a></li>
-      <li><a href="#japan">Japan</a></li>
-      <li><a href="#usa">USA</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <div class="logo">AccessibleTravel</div>
+  <ul>
+    <li><a href="#france">🇫🇷 France</a></li>
+    <li><a href="#japan">🇯🇵 Japan</a></li>
+    <li><a href="#usa">🇺🇸 USA</a></li>
+    <li><a href="#germany">🇩🇪 Germany</a></li>
+    <li><a href="#brazil">🇧🇷 Brazil</a></li>
+    <li><a href="#australia">🇦🇺 Australia</a></li>
+  </ul>
+</nav>
 
-  <header>
-    <h1>Accessible Hotels Around the World</h1>
-    <p>Discover carefully selected hotels offering facilities for travelers with special needs — from wheelchair access to sensory-friendly support.</p>
-  </header>
+<main>
 
-  <main>
+  <!-- Group 1 -->
+  <section class="country-group">
     <!-- France -->
-    <section class="country-hotels" id="france">
+    <section class="country-section" id="france">
       <h2>🇫🇷 France</h2>
       <div class="hotel-list">
-
-        <article class="hotel-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/AccorHotels_Arena%2C_Paris_2016.jpg/640px-AccorHotels_Arena%2C_Paris_2016.jpg" alt="AccorHotels Paris" />
+        <div class="hotel-card">
+          <img src="170.jpg" alt="Hotel Lumière Paris" />
           <div class="hotel-info">
-            <h3>AccorHotels Arena</h3>
-            <p><strong>Location:</strong> Paris</p>
-            <p>Offers ADA-compliant rooms, wheelchair access, braille signage, and support for service animals.</p>
-            <div class="tags">
-              <span>♿ Wheelchair Friendly</span>
-              <span>🐕 Service Animal Support</span>
-              <span>🛏 Accessible Rooms</span>
-            </div>
-            <button class="book-button">Book Now</button>
+            <h3>Hotel Lumière</h3>
+            <p>Paris – Accessible rooms with roll-in showers and audio support.</p>
+            <div class="tags"><span>♿ Accessible</span><span>🛁 Roll-In Shower</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
           </div>
-        </article>
-
+        </div>
+        <div class="hotel-card">
+          <img src="171.webp" alt="Grand Lyon Hotel" />
+          <div class="hotel-info">
+            <h3>Grand Lyon</h3>
+            <p>Modern hotel with hearing loops, braille, and elevator access.</p>
+            <div class="tags"><span>🔊 Hearing Support</span><span>🛗 Elevator</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="172.jpg" alt="Nice Bay Resort" />
+          <div class="hotel-info">
+            <h3>Nice Bay Resort</h3>
+            <p>Seaside retreat with visual fire alarms and ramps everywhere.</p>
+            <div class="tags"><span>🔥 Visual Alarms</span><span>🚪 Wide Doors</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Japan -->
-    <section class="country-hotels" id="japan">
+    <section class="country-section" id="japan">
       <h2>🇯🇵 Japan</h2>
       <div class="hotel-list">
-
-        <article class="hotel-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Hotel_New_Otani_Tokyo_Main.jpg/640px-Hotel_New_Otani_Tokyo_Main.jpg" alt="Hotel New Otani Tokyo" />
+        <div class="hotel-card">
+          <img src="173.jpg" alt="Hotel New Otani Tokyo" />
           <div class="hotel-info">
             <h3>Hotel New Otani Tokyo</h3>
-            <p><strong>Location:</strong> Tokyo</p>
-            <p>Includes step-free access, visual fire alarms, barrier-free bathrooms, and multilingual accessible support.</p>
-            <div class="tags">
-              <span>♿ Step-Free Access</span>
-              <span>🔔 Visual Alarms</span>
-              <span>🛁 Roll-In Shower</span>
-            </div>
-            <button class="book-button">Book Now</button>
+            <p>Tokyo – Step-free access, visual fire alarms, barrier-free bathrooms.</p>
+            <div class="tags"><span>♿ Step-Free</span><span>🔥 Visual Alarms</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
           </div>
-        </article>
-
+        </div>
+        <div class="hotel-card">
+          <img src="174.jpg" alt="Kyoto Inn" />
+          <div class="hotel-info">
+            <h3>Kyoto Inn</h3>
+            <p>Traditional hotel with braille signage, ramps, and hearing loops.</p>
+            <div class="tags"><span>📝 Braille</span><span>🔊 Hearing Support</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="175.jpg" alt="Osaka Suites" />
+          <div class="hotel-info">
+            <h3>Osaka Suites</h3>
+            <p>Modern suites with accessible elevators and roll-in showers.</p>
+            <div class="tags"><span>🛗 Elevator</span><span>🛁 Roll-In Shower</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- USA -->
-    <section class="country-hotels" id="usa">
-      <h2>🇺🇸 United States</h2>
+    <section class="country-section" id="usa">
+      <h2>🇺🇸 USA</h2>
       <div class="hotel-list">
-
-        <article class="hotel-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Marriott_Marquis_DC_Exterior_2017.jpg/640px-Marriott_Marquis_DC_Exterior_2017.jpg" alt="Marriott Marquis DC" />
+        <div class="hotel-card">
+          <img src="176.jpg" alt="Marriott Marquis" />
           <div class="hotel-info">
             <h3>Marriott Marquis</h3>
-            <p><strong>Location:</strong> Washington, D.C.</p>
-            <p>Offers TTY devices, hearing loops, accessible elevators, and ADA bathrooms with grab bars.</p>
-            <div class="tags">
-              <span>🔊 Hearing Loop</span>
-              <span>🚪 Wide Doorways</span>
-              <span>🛗 Elevator Access</span>
-            </div>
-            <button class="book-button">Book Now</button>
+            <p>Washington, D.C. – TTY devices, hearing loops, ADA bathrooms.</p>
+            <div class="tags"><span>🔊 Hearing Loop</span><span>♿ ADA Compliant</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
           </div>
-        </article>
-
+        </div>
+        <div class="hotel-card">
+          <img src="177.jpg" alt="NYC Grand Hotel" />
+          <div class="hotel-info">
+            <h3>NYC Grand Hotel</h3>
+            <p>Central NYC hotel with ramps, wide doorways, and service animal support.</p>
+            <div class="tags"><span>🚪 Wide Doors</span><span>🐕 Service Animal</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="178.jpg" alt="Chicago Accessible Inn" />
+          <div class="hotel-info">
+            <h3>Chicago Accessible Inn</h3>
+            <p>Accessible rooms, roll-in showers, and wheelchair rentals available.</p>
+            <div class="tags"><span>♿ Accessible</span><span>🛁 Roll-In Shower</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
       </div>
     </section>
-  </main>
+  </section>
 
-  <footer id="contact">
-    <p>© 2025 Accessible Travel. Inclusive journeys start here.</p>
-  </footer>
+  <!-- Group 2 -->
+  <section class="country-group">
+    <!-- Germany -->
+    <section class="country-section" id="germany">
+      <h2>🇩🇪 Germany</h2>
+      <div class="hotel-list">
+        <div class="hotel-card">
+          <img src="179.jpg" alt="Berlin Comfort" />
+          <div class="hotel-info">
+            <h3>Berlin Comfort</h3>
+            <p>Berlin – Hearing loops, step-free access, and braille signs.</p>
+            <div class="tags"><span>🔊 Hearing Support</span><span>♿ Step-Free</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="180.jpg" alt="Munich Stay" />
+          <div class="hotel-info">
+            <h3>Munich Stay</h3>
+            <p>Munich – Wheelchair rentals, accessible elevators, and service animals.</p>
+            <div class="tags"><span>♿ Accessible</span><span>🛗 Elevator</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="181.jpg" alt="Frankfurt Lodge" />
+          <div class="hotel-info">
+            <h3>Frankfurt Lodge</h3>
+            <p>Frankfurt – Wide doors, ramps, and visual alarms.</p>
+            <div class="tags"><span>🚪 Wide Doors</span><span>🔥 Visual Alarms</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brazil -->
+    <section class="country-section" id="brazil">
+      <h2>🇧🇷 Brazil</h2>
+      <div class="hotel-list">
+        <div class="hotel-card">
+          <img src="182.jpg" alt="Rio Resort" />
+          <div class="hotel-info">
+            <h3>Rio Resort</h3>
+            <p>Rio de Janeiro – Accessible pools, ramps, and hearing loops.</p>
+            <div class="tags"><span>♿ Accessible</span><span>🛁 Pool</span><span>🔊 Hearing Support</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="183.jpg" alt="São Paulo Suites" />
+          <div class="hotel-info">
+            <h3>São Paulo Suites</h3>
+            <p>São Paulo – Braille signage, elevators, and visual alarms.</p>
+            <div class="tags"><span>📝 Braille</span><span>🛗 Elevator</span><span>🔥 Visual Alarms</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="184.jpg" alt="Amazon Lodge" />
+          <div class="hotel-info">
+            <h3>Amazon Lodge</h3>
+            <p>Amazon area – Wheelchair rentals and step-free paths.</p>
+            <div class="tags"><span>♿ Accessible</span><span>♿ Step-Free</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Australia -->
+    <section class="country-section" id="australia">
+      <h2>🇦🇺 Australia</h2>
+      <div class="hotel-list">
+        <div class="hotel-card">
+          <img src="185.jpg" alt="Sydney Harbor Hotel" />
+          <div class="hotel-info">
+            <h3>Sydney Harbor Hotel</h3>
+            <p>Sydney – Accessible rooms, ramps, elevators, and hearing loops.</p>
+            <div class="tags"><span>♿ Accessible</span><span>🚪 Ramps</span><span>🛗 Elevator</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="186.jpg" alt="Melbourne Suites" />
+          <div class="hotel-info">
+            <h3>Melbourne Suites</h3>
+            <p>Melbourne – Wheelchair rentals, visual alarms, and service animal support.</p>
+            <div class="tags"><span>♿ Accessible</span><span>🔥 Visual Alarms</span><span>🐕 Service Animal</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <img src="187.jpg" alt="Brisbane Resort" />
+          <div class="hotel-info">
+            <h3>Brisbane Resort</h3>
+            <p>Brisbane – Step-free access, ramps, and hearing support.</p>
+            <div class="tags"><span>♿ Step-Free</span><span>🚪 Ramps</span><span>🔊 Hearing Support</span></div>
+            <a href="booking10.html" class="book-button">Book in Now!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<footer>© 2025 AccessibleTravel. All rights reserved.</footer>
 
 </body>
 </html>
+
+
+
+
