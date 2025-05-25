@@ -33,6 +33,7 @@
         <li><a href="contact.html">Contact</a></li>
     </ul>
 </nav>
+<button onclick="document.body.classList.toggle('light-mode')">Toggle Light/Dark</button>
 
 <section class="countries-section" id="countries">
     <h2>Top 10 Countries</h2>
@@ -136,7 +137,6 @@
     <p>&copy; 2025 Travel for Good. All rights reserved.</p>
 </footer>
 
-<!-- Popup Support Prompt -->
 <div id="supportPopup" style="display:none;">
     <p>Would you like to support someone with this booking?</p>
     <button>Yes, I want to help!</button>
@@ -144,18 +144,65 @@
 </div>
 
 <script>
-    // Example Gamification Logic
-    const bookings = 5; // sample number
+    const bookings = 5; 
     const level = bookings >= 10 ? 'Helper Master 🏆' : bookings >= 5 ? 'Kind Traveler 🌍' : 'New Helper';
     console.log("User Level:", level);
 
-    // Show popup before booking
     window.onload = function() {
         setTimeout(() => {
             document.getElementById("supportPopup").style.display = "block";
         }, 3000);
     }
 </script>
+
+  
+
+
+<button id="themeToggle" aria-label="Toggle Theme" style="
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+">
+    🌙
+</button>
+<script>
+    const toggleButton = document.getElementById('themeToggle');
+  
+    
+    function setThemeIcon() {
+        toggleButton.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+    }
+  
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            toggleButton.style.display = 'block';
+        } else {
+            toggleButton.style.display = 'none';
+        }
+    });
+  
+    
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
+        setThemeIcon();
+    });
+  
+   
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+    }
+  
+    setThemeIcon();
+  </script>
+
 
  <script src="main.js"></script>
 
