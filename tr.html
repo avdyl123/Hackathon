@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel by Train</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    nav {
+      background-color: #1e3d59;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      color: white;
+    }
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #66c7ff;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1e3d59 0%, #3a5068 100%);
+      color: white;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1.3px;
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .train-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .train-card {
+      background: white;
+      width: 320px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .train-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+    }
+    .train-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .train-info {
+      padding: 1rem 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .train-info h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #1e3d59;
+    }
+    .train-info p {
+      margin: 0.5rem 0 1rem 0;
+      color: #555;
+      font-size: 1rem;
+      flex-grow: 1;
+    }
+    .route {
+      font-weight: 600;
+      color: #2a5d8f;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: #777;
+      font-size: 0.9rem;
+      background: #e0e7f2;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .train-card {
+        width: 90%;
+      }
+      nav {
+        justify-content: center;
+      }
+      nav ul {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Rail Journeys</div>
+    <ul>
+      <li><a href="#trans-siberian">Trans-Siberian</a></li>
+      <li><a href="#rocky-mountaineer">Rocky Mountaineer</a></li>
+      <li><a href="#glacier-express">Glacier Express</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Explore the World by Train</h1>
+    <p>Discover breathtaking landscapes and unforgettable experiences on some of the world's most scenic train routes.</p>
+  </header>
+
+  <main>
+    <section class="train-list" id="trans-siberian">
+      <article class="train-card">
+        <img src="https://images.unsplash.com/photo-1509228627152-29a57c338e99?auto=format&fit=crop&w=640&q=80" alt="Trans-Siberian Railway" />
+        <div class="train-info">
+          <h3>Trans-Siberian Railway</h3>
+          <p>Journey across Russia from Moscow to Vladivostok, passing endless forests, lakes, and the Ural Mountains.</p>
+          <div class="route">Moscow → Vladivostok</div>
+        </div>
+      </article>
+
+      <article class="train-card" id="rocky-mountaineer">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80" alt="Rocky Mountaineer" />
+        <div class="train-info">
+          <h3>Rocky Mountaineer</h3>
+          <p>Experience Canada's majestic Rocky Mountains with stunning views, luxury service, and wildlife sightings.</p>
+          <div class="route">Vancouver → Banff</div>
+        </div>
+      </article>
+
+      <article class="train-card" id="glacier-express">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=640&q=80" alt="Glacier Express" />
+        <div class="train-info">
+          <h3>Glacier Express</h3>
+          <p>Traverse the Swiss Alps aboard the panoramic Glacier Express, connecting Zermatt and St. Moritz.</p>
+          <div class="route">Zermatt → St. Moritz</div>
+        </div>
+      </article>
+
+      <article class="train-card">
+        <img src="https://images.unsplash.com/photo-1549924234-5127dcad0a07?auto=format&fit=crop&w=640&q=80" alt="The Ghan" />
+        <div class="train-info">
+          <h3>The Ghan</h3>
+          <p>Explore Australia’s Red Centre on a historic journey from Adelaide to Darwin, through deserts and outback.</p>
+          <div class="route">Adelaide → Darwin</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>© 2025 Rail Journeys. All aboard for adventure!</p>
+  </footer>
+
+</body>
+</html>

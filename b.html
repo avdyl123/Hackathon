@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beautiful Beaches Around the World</title>
+  <style>
+    /* Base and reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f0f8ff;
+      color: #222;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #0099cc;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      font-weight: 600;
+      color: white;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #cceeff;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: linear-gradient(90deg, #0099cc 0%, #66ccff 100%);
+      color: white;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
+    /* Main container */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    /* Beach cards row */
+    .beach-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .beach-card {
+      background: white;
+      width: 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .beach-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+    .beach-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .beach-info {
+      padding: 1rem 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .beach-info h3 {
+      margin-top: 0;
+      color: #0077aa;
+      font-size: 1.4rem;
+    }
+    .beach-info p {
+      color: #444;
+      font-size: 1rem;
+      margin: 0.6rem 0 0 0;
+      flex-grow: 1;
+    }
+    .location {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: #0099cc;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      background: #e0f0ff;
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .beach-card {
+        width: 90%;
+      }
+      nav {
+        justify-content: center;
+      }
+      nav ul {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">BeachExplorer</div>
+    <ul>
+      <li><a href="#maldives">Maldives</a></li>
+      <li><a href="#bora-bora">Bora Bora</a></li>
+      <li><a href="#maui">Maui</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Beautiful Beaches Around the World</h1>
+    <p>Explore pristine shores and turquoise waters — perfect places to relax, unwind, and soak in nature's beauty.</p>
+  </header>
+
+  <main>
+
+    <section class="beach-list" id="maldives">
+      <article class="beach-card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=640&q=80" alt="Maldives Beach" />
+        <div class="beach-info">
+          <h3>Maldives</h3>
+          <p>Crystal-clear waters, white sandy beaches, and vibrant coral reefs make Maldives a tropical paradise.</p>
+          <div class="location">Indian Ocean</div>
+        </div>
+      </article>
+
+      <article class="beach-card" id="bora-bora">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=640&q=80" alt="Bora Bora Beach" />
+        <div class="beach-info">
+          <h3>Bora Bora</h3>
+          <p>Famous for its turquoise lagoon protected by a coral reef, perfect for snorkeling and luxury resorts.</p>
+          <div class="location">French Polynesia</div>
+        </div>
+      </article>
+
+      <article class="beach-card" id="maui">
+        <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=640&q=80" alt="Maui Beach" />
+        <div class="beach-info">
+          <h3>Maui</h3>
+          <p>Beautiful beaches combined with volcanic landscapes offer unique sunsets and outdoor adventures.</p>
+          <div class="location">Hawaii, USA</div>
+        </div>
+      </article>
+
+      <article class="beach-card">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=640&q=80" alt="Navagio Beach" />
+        <div class="beach-info">
+          <h3>Navagio Beach</h3>
+          <p>Also known as Shipwreck Beach, a stunning cove with white sand surrounded by towering limestone cliffs.</p>
+          <div class="location">Zakynthos, Greece</div>
+        </div>
+      </article>
+
+      <article class="beach-card">
+        <img src="https://images.unsplash.com/photo-1465311443279-4f6e63d93ab9?auto=format&fit=crop&w=640&q=80" alt="Whitehaven Beach" />
+        <div class="beach-info">
+          <h3>Whitehaven Beach</h3>
+          <p>Famous for its pure white silica sand and crystal clear blue water, accessible only by boat or helicopter.</p>
+          <div class="location">Queensland, Australia</div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>© 2025 BeachExplorer. Dive into the beauty of the world's best beaches.</p>
+  </footer>
+
+</body>
+</html>
